@@ -129,6 +129,7 @@ export default function SignUpBody() {
           <HavingAcc
             mainTxt="Already have an account?"
             linkTxt="Sign in here"
+            linkTo="/auth/sign-in"
           />
         </div>
       </div>

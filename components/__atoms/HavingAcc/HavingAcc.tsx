@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export type HavingAccTypes = {
@@ -15,9 +16,12 @@ export default function HavingAcc({
     <>
       <p className="text-center text-sm text-gray-400 mt-6">
         {mainTxt}
-        <button className="text-blue-400 hover:text-blue-300 font-medium transition-colors">
+        <Link
+          href={`${linkTo}`}
+          className="text-blue-400 hover:text-blue-300 font-medium transition-colors"
+        >
           {linkTxt}
-        </button>
+        </Link>
       </p>
     </>
   );
