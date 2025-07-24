@@ -21,3 +21,30 @@ export interface IndustrySelectProps {
 export interface LabelProps {
   text: string;
 }
+
+type SubscriptionPlan = "free" | "basic" | "premium";
+
+interface User {
+  _id: string;
+  companyName?: string;
+  companyEmail?: string;
+  companyCountry?: string;
+  companyIndustry?: string;
+  isActive: boolean;
+  companyProfilePicture?: string;
+  subscription?: {
+    plan: SubscriptionPlan;
+    activatedAt: string | null;
+  };
+  employees?: string[];
+  files: string[];
+  employeeEmail?: string;
+  company?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface UserInfoStore {
+  user: User | null;
+  setUser: (user: User | null) => void;
+}

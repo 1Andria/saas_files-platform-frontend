@@ -5,9 +5,12 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import CompanyDashboardBody from "../CompanyDashboardBody/CompanyDashboardBody";
 import EmployeeDashboardBody from "../EmployeeDashboardBody/EmployeeDashboardBody";
+import { useUserInfo } from "@/app/common/store/store";
 
 export default function Dashboard() {
-  const [user, setUser] = useState<any>(null);
+  const user = useUserInfo((state) => state.user);
+  const setUser = useUserInfo((state) => state.setUser);
+
   const [role, setRole] = useState<"company" | "employee" | null>(null);
   const router = useRouter();
 
