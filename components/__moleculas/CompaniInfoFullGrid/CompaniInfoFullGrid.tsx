@@ -36,7 +36,7 @@ export default function CompaniInfoFullGrid() {
         iconColorClass="text-blue-600"
       />
       <CompanyInfoCard
-        infoLength={user?.employees?.length ?? 0}
+        infoLength={user?.files?.length ?? 0}
         infoText="Total Files"
         Icon={FileText}
         iconColorClass="text-green-600"
