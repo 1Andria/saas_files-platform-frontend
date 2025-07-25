@@ -2,6 +2,8 @@ import { useDashboardTab } from "@/app/common/store/store";
 import DashboardHeader from "@/components/__moleculas/DashboardHeader/DashboardHeader";
 import DashboardNavigation from "@/components/__moleculas/DashboardNavigation/DashboardNavigation";
 import DashboardTabsSyncer from "@/components/__moleculas/DashboardTabsSyncer/DashboardTabsSyncer";
+import EmployeeTab from "@/components/__moleculas/EmployeeTab/EmployeeTab";
+import FilesTab from "@/components/__moleculas/FilesTab/FilesTab";
 import OverviewTab from "@/components/__moleculas/OverviewTab/OverviewTab";
 import React from "react";
 
@@ -10,11 +12,13 @@ export default function CompanyDashboardBody() {
 
   return (
     <>
-      <div className="min-h-screen w-full bg-gray-900">
+      <div className="min-h-screen w-full bg-gray-900 pb-[50px]">
         <DashboardTabsSyncer />
         <DashboardHeader />
         <DashboardNavigation />
         {activeTab === "overview" && <OverviewTab />}
+        {activeTab === "employees" && <EmployeeTab />}
+        {activeTab === "files" && <FilesTab />}
       </div>
     </>
   );

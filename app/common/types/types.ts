@@ -47,4 +47,5 @@ interface User {
 export interface UserInfoStore {
   user: User | null;
   setUser: (user: User | null) => void;
+  fetchUser: () => Promise<void>;
 }

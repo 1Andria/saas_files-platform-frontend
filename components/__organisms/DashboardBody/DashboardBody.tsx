@@ -1,4 +1,5 @@
 "use client";
+
 import { axiosInstance } from "@/lib/axios-instance";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
@@ -9,53 +10,47 @@ import { useUserInfo } from "@/app/common/store/store";
 
 export default function Dashboard() {
   const user = useUserInfo((state) => state.user);
-  const setUser = useUserInfo((state) => state.setUser);
+  const fetchUser = useUserInfo((state) => state.fetchUser);
 
   const [role, setRole] = useState<"company" | "employee" | null>(null);
   const router = useRouter();
 
   useEffect(() => {
-    const tokenFromCookie = getCookie("token") as string | null;
-    if (!tokenFromCookie) {
+    const token = getCookie("token") as string | null;
+
+    if (!token) {
       router.push("/auth/registration");
-    } else {
-      getUserData(tokenFromCookie);
+      return;
     }
-  }, []);
 
-  const getUserData = async (token: string) => {
-    try {
-      const resp = await axiosInstance.get("/auth/current-user", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+    const fetchAndSetUser = async () => {
+      await fetchUser();
+      const updatedUser = useUserInfo.getState().user;
 
-      const data = resp.data;
-      setUser(data);
+      if (!updatedUser) {
+        router.push("/auth/registration");
+        return;
+      }
 
-      if ("companyName" in data) {
+      if ("companyName" in updatedUser) {
         setRole("company");
-      } else if ("employeeEmail" in data) {
+      } else if ("employeeEmail" in updatedUser) {
         setRole("employee");
       } else {
         setRole(null);
       }
-    } catch (err) {
-      console.error("Failed to fetch user:", err);
-      router.push("/auth/registration");
-    }
-  };
+    };
+
+    fetchAndSetUser();
+  }, []);
 
   if (!user || !role) {
     return <div className="text-white">Loading...</div>;
   }
 
-  return (
-    <>
-      {role === "company" ? (
-        <CompanyDashboardBody />
-      ) : (
-        <EmployeeDashboardBody />
-      )}
-    </>
+  return role === "company" ? (
+    <CompanyDashboardBody />
+  ) : (
+    <EmployeeDashboardBody />
   );
 }

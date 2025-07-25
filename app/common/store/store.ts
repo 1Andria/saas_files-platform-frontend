@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import { CompanyEmailTypes, UserInfoStore } from "../types/types";
 import { persist } from "zustand/middleware";
+import { getCookie } from "cookies-next";
+import { axiosInstance } from "@/lib/axios-instance";
 
 export const useCompanyEmail = create<CompanyEmailTypes>()(
   persist(
@@ -18,6 +20,20 @@ export const useCompanyEmail = create<CompanyEmailTypes>()(
 export const useUserInfo = create<UserInfoStore>((set) => ({
   user: null,
   setUser: (user) => set({ user }),
+  fetchUser: async () => {
+    try {
+      const token = getCookie("token");
+      if (!token) return;
+
+      const resp = await axiosInstance.get("/auth/current-user", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      set({ user: resp.data });
+    } catch (error) {
+      console.error("Failed to fetch user:", error);
+    }
+  },
 }));
 
 export type Tab = "overview" | "employees" | "files" | "profile";
