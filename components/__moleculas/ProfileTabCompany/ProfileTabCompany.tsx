@@ -196,10 +196,10 @@ export default function ProfileTabCompany() {
             <button
               type="submit"
               disabled={!hasChanges}
-              className={`bg-blue-600  text-white px-6 py-2 rounded-lg transition-colors
+              className={`bg-blue-600   text-white px-6 py-2 rounded-lg transition-colors
                 ${
                   hasChanges
-                    ? "hover:bg-blue-700"
+                    ? "hover:bg-blue-700 cursor-pointer"
                     : "opacity-50 cursor-not-allowed"
                 }
                 `}
@@ -212,7 +212,7 @@ export default function ProfileTabCompany() {
               disabled={!hasChanges}
               className={`border border-gray-600 text-gray-300 px-6 py-2 rounded-lg transition-colors ${
                 hasChanges
-                  ? "hover:bg-gray-700"
+                  ? "hover:bg-gray-700 cursor-pointer"
                   : "opacity-50 cursor-not-allowed"
               }`}
             >
@@ -270,7 +270,7 @@ export default function ProfileTabCompany() {
           <div className="flex space-x-4">
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors cursor-pointer"
             >
               Save Changes
             </button>

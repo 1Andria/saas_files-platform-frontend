@@ -49,3 +49,9 @@ export interface UserInfoStore {
   setUser: (user: User | null) => void;
   fetchUser: () => Promise<void>;
 }
+
+export interface SubscriptionModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  currentPlan: "Free" | "Basic" | "Premium";
+}
