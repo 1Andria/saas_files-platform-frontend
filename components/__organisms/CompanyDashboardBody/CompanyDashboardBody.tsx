@@ -5,6 +5,7 @@ import DashboardTabsSyncer from "@/components/__moleculas/DashboardTabsSyncer/Da
 import EmployeeTab from "@/components/__moleculas/EmployeeTab/EmployeeTab";
 import FilesTab from "@/components/__moleculas/FilesTab/FilesTab";
 import OverviewTab from "@/components/__moleculas/OverviewTab/OverviewTab";
+import ProfileTabCompany from "@/components/__moleculas/ProfileTabCompany/ProfileTabCompany";
 import React from "react";
 
 export default function CompanyDashboardBody() {
@@ -19,6 +20,7 @@ export default function CompanyDashboardBody() {
         {activeTab === "overview" && <OverviewTab />}
         {activeTab === "employees" && <EmployeeTab />}
         {activeTab === "files" && <FilesTab />}
+        {activeTab === "profile" && <ProfileTabCompany />}
       </div>
     </>
   );
