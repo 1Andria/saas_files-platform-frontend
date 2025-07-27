@@ -17,7 +17,7 @@ export default function DeleteCompanyBtn() {
     try {
       const token = getCookie("token");
 
-      const res = await axiosInstance.delete("/companies", {
+      const res = await axiosInstance.delete("/company", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
