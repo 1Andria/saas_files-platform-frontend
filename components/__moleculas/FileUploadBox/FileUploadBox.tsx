@@ -1,14 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Upload, X } from "lucide-react";
 import { getCookie } from "cookies-next";
 import { toast } from "sonner";
 import { axiosInstance } from "@/lib/axios-instance";
-
-interface FileUploadBoxProps {
-  onUploadSuccess?: () => void;
-}
+import { FileUploadBoxProps } from "@/app/common/types/types";
 
 export default function FileUploadBox({ onUploadSuccess }: FileUploadBoxProps) {
   const [dragOver, setDragOver] = useState(false);
@@ -19,6 +16,7 @@ export default function FileUploadBox({ onUploadSuccess }: FileUploadBoxProps) {
   const [emails, setEmails] = useState<string[]>([]);
   const [emailInput, setEmailInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFiles(e.target.files);
@@ -70,6 +68,7 @@ export default function FileUploadBox({ onUploadSuccess }: FileUploadBoxProps) {
         toast.success("File uploaded successfully");
         setFiles(null);
         setEmails([]);
+        fileInputRef.current && (fileInputRef.current.value = "");
         onUploadSuccess?.();
       } else {
         toast.error(resp.data.message || "Upload failed");
@@ -171,6 +170,7 @@ export default function FileUploadBox({ onUploadSuccess }: FileUploadBoxProps) {
           Supported formats: CSV, XLS, XLSX
         </p>
         <input
+          ref={fileInputRef}
           type="file"
           multiple
           accept=".csv,.xls,.xlsx"
@@ -178,6 +178,7 @@ export default function FileUploadBox({ onUploadSuccess }: FileUploadBoxProps) {
           className="hidden"
           id="file-upload"
         />
+
         <label
           htmlFor="file-upload"
           className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors cursor-pointer inline-block"

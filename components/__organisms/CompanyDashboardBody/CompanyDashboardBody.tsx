@@ -13,7 +13,7 @@ export default function CompanyDashboardBody() {
 
   return (
     <>
-      <div className="min-h-screen w-full bg-gray-900 pb-[50px]">
+      <div className="min-h-screen w-full bg-gray-900 pb-[30px]">
         <DashboardTabsSyncer />
         <DashboardHeader />
         <DashboardNavigation />

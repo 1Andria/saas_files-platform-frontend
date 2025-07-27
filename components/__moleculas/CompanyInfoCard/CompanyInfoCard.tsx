@@ -1,13 +1,5 @@
 import React from "react";
-import { LucideIcon } from "lucide-react";
-
-interface Props {
-  infoLength: number | string;
-  infoText: string;
-  Icon: LucideIcon;
-  iconColorClass?: string;
-  bgVariant?: "free" | "basic" | "premium";
-}
+import { CompanyInfoCardProps } from "@/app/common/types/types";
 
 export default function CompanyInfoCard({
   infoLength,
@@ -15,7 +7,7 @@ export default function CompanyInfoCard({
   Icon,
   iconColorClass = "text-blue-600",
   bgVariant,
-}: Props) {
+}: CompanyInfoCardProps) {
   const bgClass =
     bgVariant === "premium"
       ? "bg-yellow-900/50 border-yellow-800"

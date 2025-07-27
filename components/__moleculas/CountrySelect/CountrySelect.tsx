@@ -2,17 +2,10 @@
 
 import { Globe } from "lucide-react";
 import Select from "react-select";
-import { Control, Controller } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { Label } from "@/components/__atoms/Label/Label";
 import { useId } from "react";
-
-interface CountrySelectProps {
-  control: Control<any>;
-  name: string;
-  label: string;
-  countries: { label: string; value: string }[];
-  error?: boolean;
-}
+import { CountrySelectProps } from "@/app/common/types/types";
 
 export function CountrySelect({
   control,

@@ -23,7 +23,7 @@ export default function SubscriptionPlanBtn() {
 
   return (
     <>
-      <div className=" bg-gray-800 max-w-[540px] mt-[50px] mx-auto px-[16px] rounded-xl shadow-sm p-6 border border-gray-700">
+      <div className=" bg-gray-800 max-w-[540px] mt-[40px] mx-auto px-[16px] rounded-xl shadow-sm p-6 border border-gray-700">
         <h3 className="text-lg font-semibold text-white mb-4">
           Subscription Plan
         </h3>

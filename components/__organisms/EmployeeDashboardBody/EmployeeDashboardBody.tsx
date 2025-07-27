@@ -1,6 +1,7 @@
 import { useEmployeeDashboardTab } from "@/app/common/store/store";
 import EmployeeDashboardHeader from "@/components/__moleculas/EmployeeDashboardHeader/EmployeeDashboardHeader";
 import EmployeeDashboardNavigation from "@/components/__moleculas/EmployeeDashboardNavigation/EmployeeDashboardNavigation";
+import EmployeeDashboardProfileTab from "@/components/__moleculas/EmployeeDashboardProfileTab/EmployeeDashboardProfileTab";
 import EmployeeDashboardTabFile from "@/components/__moleculas/EmployeeDashboardTabFile/EmployeeDashboardTabFile";
 import React from "react";
 
@@ -15,7 +16,7 @@ export default function EmployeeDashboardBody() {
         <EmployeeDashboardNavigation />
       </div>
       {activeTab === "files" && <EmployeeDashboardTabFile />}
-      {activeTab === "profile" && <h1>assd</h1>}
+      {activeTab === "profile" && <EmployeeDashboardProfileTab />}
     </div>
   );
 }

@@ -6,14 +6,7 @@ import { Modal } from "@mui/material";
 import { axiosInstance } from "@/lib/axios-instance";
 import { getCookie } from "cookies-next";
 import { toast } from "sonner";
-
-interface Props {
-  open: boolean;
-  onClose: () => void;
-  fileId: string;
-  currentEmails: string[];
-  onSuccess: () => void;
-}
+import { EditPermissionModalProps } from "@/app/common/types/types";
 
 export default function EditPermissionsModal({
   open,
@@ -21,7 +14,7 @@ export default function EditPermissionsModal({
   fileId,
   currentEmails,
   onSuccess,
-}: Props) {
+}: EditPermissionModalProps) {
   const [emailInput, setEmailInput] = useState("");
   const [emails, setEmails] = useState<string[]>(currentEmails);
   const [loading, setLoading] = useState(false);

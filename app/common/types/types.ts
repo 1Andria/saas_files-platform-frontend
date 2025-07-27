@@ -1,4 +1,5 @@
-import { UseFormRegister } from "react-hook-form";
+import { LucideIcon } from "lucide-react";
+import { Control, UseFormRegister } from "react-hook-form";
 
 export type CompanyEmailTypes = {
   companyEmail: string;
@@ -56,4 +57,37 @@ export interface SubscriptionModalProps {
   isOpen: boolean;
   onClose: () => void;
   currentPlan: "Free" | "Basic" | "Premium";
+}
+
+export interface FileUploadBoxProps {
+  onUploadSuccess?: () => void;
+}
+
+export interface EmployeeCardProps {
+  employee: any;
+  onDelete: (id: string) => void;
+}
+
+export interface EditPermissionModalProps {
+  open: boolean;
+  onClose: () => void;
+  fileId: string;
+  currentEmails: string[];
+  onSuccess: () => void;
+}
+
+export interface CountrySelectProps {
+  control: Control<any>;
+  name: string;
+  label: string;
+  countries: { label: string; value: string }[];
+  error?: boolean;
+}
+
+export interface CompanyInfoCardProps {
+  infoLength: number | string;
+  infoText: string;
+  Icon: LucideIcon;
+  iconColorClass?: string;
+  bgVariant?: "free" | "basic" | "premium";
 }

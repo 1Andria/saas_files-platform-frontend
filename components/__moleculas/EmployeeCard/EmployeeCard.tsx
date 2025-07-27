@@ -1,10 +1,6 @@
 import React from "react";
 import { User, Calendar, Trash2, FileText, Clock } from "lucide-react";
-
-interface EmployeeCardProps {
-  employee: any;
-  onDelete: (id: string) => void;
-}
+import { EmployeeCardProps } from "@/app/common/types/types";
 
 export default function EmployeeCard({
   employee,
