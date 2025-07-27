@@ -7,9 +7,6 @@ export default function DashboardCompanyItems() {
 
   const employees = user?.employees ?? [];
   const files = user?.files ?? [];
-  console.log(employees);
-  console.log(files);
-  console.log(user);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1340px] mx-auto mt-10">

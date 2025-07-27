@@ -40,7 +40,6 @@ export const plans = [
       "Enterprise file sharing",
       "24/7 phone support",
       "Advanced analytics",
-      "Custom branding",
     ],
   },
 ];

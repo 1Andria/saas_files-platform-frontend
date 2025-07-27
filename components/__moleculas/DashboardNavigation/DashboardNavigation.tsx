@@ -33,20 +33,21 @@ export default function DashboardNavigation() {
 
   return (
     <div className="bg-gray-800 border-b border-gray-700">
-      <nav className=" max-w-[1340px] mx-auto bg-gray-800  px-6 pb-[2px]">
-        <div className="flex space-x-8">
+      <nav className="max-w-[1340px] mx-auto px-4 sm:px-6 pb-[2px]">
+        <div className="flex flex-wrap sm:flex-nowrap justify-between sm:space-x-8">
           {tabs.map(({ id, label, icon: Icon }) => (
             <button
               key={id}
               onClick={() => handleTabClick(id)}
-              className={`flex cursor-pointer items-center space-x-2 py-4 border-b-2 transition-colors ${
-                activeTab === id
-                  ? "border-blue-600 text-blue-400"
-                  : "border-transparent text-gray-400 hover:text-white"
-              }`}
+              className={`flex items-center w-1/2 sm:w-auto justify-center sm:justify-start space-x-2 py-4 transition-colors
+      ${
+        activeTab === id
+          ? "sm:border-b-2 sm:border-blue-600 text-blue-400"
+          : "sm:border-b-2 sm:border-transparent text-gray-400 hover:text-white"
+      }`}
             >
               <Icon className="w-5 h-5" />
-              <span className="font-medium">{label}</span>
+              <span className="font-medium text-sm">{label}</span>
             </button>
           ))}
         </div>

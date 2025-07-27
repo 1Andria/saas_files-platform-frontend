@@ -3,6 +3,7 @@ import { CompanyEmailTypes, UserInfoStore } from "../types/types";
 import { persist } from "zustand/middleware";
 import { getCookie } from "cookies-next";
 import { axiosInstance } from "@/lib/axios-instance";
+import { toast } from "sonner";
 
 export const useCompanyEmail = create<CompanyEmailTypes>()(
   persist(
@@ -47,3 +48,17 @@ export const useDashboardTab = create<DashboardTabState>((set) => ({
   activeTab: "overview",
   setActiveTab: (tab) => set({ activeTab: tab }),
 }));
+
+export type EmployeeTab = "files" | "profile";
+
+interface EmployeeDashboardTabState {
+  activeTab: EmployeeTab;
+  setActiveTab: (tab: EmployeeTab) => void;
+}
+
+export const useEmployeeDashboardTab = create<EmployeeDashboardTabState>(
+  (set) => ({
+    activeTab: "files",
+    setActiveTab: (tab) => set({ activeTab: tab }),
+  })
+);

@@ -39,7 +39,9 @@ interface User {
   employees?: string[];
   files: string[];
   employeeEmail?: string;
-  company?: string;
+  company?: {
+    companyName: string;
+  };
   createdAt: string;
   updatedAt: string;
 }

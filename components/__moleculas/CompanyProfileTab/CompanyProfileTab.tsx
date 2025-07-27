@@ -6,7 +6,9 @@ export default function CompanyProfileTab() {
   return (
     <>
       <ProfileTabCompany />
-      <SubscriptionPlanBtn />
+      <div className="px-[16px]">
+        <SubscriptionPlanBtn />
+      </div>
     </>
   );
 }

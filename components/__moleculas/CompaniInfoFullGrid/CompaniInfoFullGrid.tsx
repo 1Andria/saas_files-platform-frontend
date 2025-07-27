@@ -28,7 +28,7 @@ export default function CompaniInfoFullGrid() {
   const { Icon, iconColorClass, bgVariant } = planConfig[plan];
 
   return (
-    <div className="w-ful  mt-[40px] max-w-[1340px] mx-auto flex justify-between gap-[40px]">
+    <div className="w-full  mt-[40px] max-w-[1340px] mx-auto flex justify-between gap-[40px] max-[960px]:gap-[20px] max-[800px]:flex-col">
       <CompanyInfoCard
         infoLength={user?.employees?.length ?? 0}
         infoText="Total Employees"

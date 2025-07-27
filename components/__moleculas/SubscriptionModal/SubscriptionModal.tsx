@@ -115,7 +115,7 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
 
   return (
     <Modal open={isOpen} onClose={onClose}>
-      <Box className="bg-gray-900 text-white rounded-2xl shadow-lg w-full max-w-5xl max-h-[90vh] overflow-y-auto p-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <Box className="bg-gray-900  text-white rounded-2xl shadow-lg w-full max-w-5xl max-h-[95vh]  p-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
           <div>
             <Typography variant="h5" className="font-bold text-white">
@@ -165,7 +165,7 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
                   )}
                 </div>
 
-                <div className="space-y-3 mb-6 text-sm text-gray-200">
+                <div className="space-y-3  mb-6 text-sm text-gray-200">
                   {plan.features.map((feature, idx) => (
                     <div
                       key={idx}
@@ -213,8 +213,11 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
         <div className="mt-8 p-4 bg-gray-800 rounded-xl text-sm text-gray-300">
           <h4 className="font-semibold text-white mb-2">Need help choosing?</h4>
           <p>
-            Contact our support team for a personalized recommendation based on
-            your company’s needs.
+            To test the payment, choose any card payment method and enter the
+            following test details: Card Number:
+            <strong>4242 4242 4242 4242</strong>| Expiration Date:{" "}
+            <strong>12/34</strong>| CVC: <strong>123</strong>| You can use any
+            fake email and cardholder name — no real data is required.
           </p>
         </div>
       </Box>
