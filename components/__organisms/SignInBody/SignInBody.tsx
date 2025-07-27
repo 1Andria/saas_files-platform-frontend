@@ -2,6 +2,7 @@
 import { CompanySignInForm } from "@/components/__moleculas/CompanySignInForm/CompanySignInForm";
 import { EmployeeSignInForm } from "@/components/__moleculas/EmployeeSignInForm/EmployeeSignInForm";
 import { Briefcase, User } from "lucide-react";
+import Link from "next/link";
 import React, { useState } from "react";
 
 export default function SignInBody() {
@@ -27,6 +28,14 @@ export default function SignInBody() {
               <User className="w-5 h-5 mr-2" />
               Employee
             </button>
+          </div>
+          <div className="w-full mt-6 text-left">
+            <Link
+              href="/auth/registration"
+              className="text-sm text-gray-400 hover:text-white transition duration-200 hover:underline"
+            >
+              ← Back to registration
+            </Link>
           </div>
         </div>
       </div>
