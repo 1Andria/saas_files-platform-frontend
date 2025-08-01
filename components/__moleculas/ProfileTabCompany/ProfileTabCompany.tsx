@@ -25,6 +25,8 @@ export default function ProfileTabCompany() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [repeatNewPassword, setRepeatNewPassword] = useState("");
+  const [isUpdatingCompany, setIsUpdatingCompany] = useState(false);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
 
   const {
     register,
@@ -60,6 +62,7 @@ export default function ProfileTabCompany() {
   }, [watched, user]);
 
   const onSubmit = async (data: CompanyInfoInputs) => {
+    setIsUpdatingCompany(true);
     try {
       const resp = await axiosInstance.patch(
         `/company/${user?._id}`,
@@ -83,6 +86,8 @@ export default function ProfileTabCompany() {
       const msg = e.response?.data?.message;
       if (typeof msg === "string") toast.error(msg);
       else if (Array.isArray(msg)) msg.forEach((m: string) => toast.error(m));
+    } finally {
+      setIsUpdatingCompany(false);
     }
   };
 
@@ -96,6 +101,7 @@ export default function ProfileTabCompany() {
 
   const handlePasswordChange = async (e: any) => {
     e.preventDefault();
+    setIsChangingPassword(true);
     try {
       const resp = await axiosInstance.patch(
         `/company/change-password`,
@@ -118,6 +124,8 @@ export default function ProfileTabCompany() {
       const msg = e.response?.data?.message;
       if (typeof msg === "string") toast.error(msg);
       else if (Array.isArray(msg)) msg.forEach((m: string) => toast.error(m));
+    } finally {
+      setIsChangingPassword(false);
     }
   };
 
@@ -195,17 +203,43 @@ export default function ProfileTabCompany() {
           <div className="flex space-x-4">
             <button
               type="submit"
-              disabled={!hasChanges}
-              className={`bg-blue-600   text-white px-6 py-2 rounded-lg transition-colors
-                ${
-                  hasChanges
-                    ? "hover:bg-blue-700 cursor-pointer"
-                    : "opacity-50 cursor-not-allowed"
-                }
-                `}
+              disabled={!hasChanges || isUpdatingCompany}
+              className={`bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors flex items-center justify-center
+    ${
+      hasChanges && !isUpdatingCompany
+        ? "hover:bg-blue-700 cursor-pointer"
+        : "opacity-50 cursor-not-allowed"
+    }`}
             >
-              Confirm Changes
+              {isUpdatingCompany ? (
+                <span className="flex items-center gap-2">
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    />
+                  </svg>
+                  Updating...
+                </span>
+              ) : (
+                "Confirm Changes"
+              )}
             </button>
+
             <button
               type="button"
               onClick={handleReset}
@@ -270,9 +304,36 @@ export default function ProfileTabCompany() {
           <div className="flex space-x-4">
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors cursor-pointer"
+              disabled={isChangingPassword}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors cursor-pointer flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Save Changes
+              {isChangingPassword ? (
+                <span className="flex items-center gap-2">
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    />
+                  </svg>
+                  Updating...
+                </span>
+              ) : (
+                "Save Changes"
+              )}
             </button>
           </div>
         </form>
