@@ -29,7 +29,7 @@ export default function FileUploadBox({ onUploadSuccess }: FileUploadBoxProps) {
   };
 
   const addEmail = () => {
-    const trimmed = emailInput.trim();
+    const trimmed = emailInput.trim().toLowerCase();
     if (trimmed && !emails.includes(trimmed)) {
       setEmails([...emails, trimmed]);
       setEmailInput("");
@@ -49,7 +49,7 @@ export default function FileUploadBox({ onUploadSuccess }: FileUploadBoxProps) {
 
     if (visibility === "specific" && emails.length > 0) {
       emails.forEach((email) => {
-        formData.append("visibleTo", email);
+        formData.append("visibleTo[]", email);
       });
     }
 
